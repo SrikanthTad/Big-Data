@@ -59,6 +59,37 @@ public class Pymk3 {
             context.write(user, result);
         }
     }
-}
 
-   
+    //Mapper-2
+    public static class Mapper2 extends Mapper<Object, Text, IntWritable, IntWritable> {
+
+        public void map(Object key, Text values, Context context) throws IOException, InterruptedException {
+            StringTokenizer st = new StringTokenizer(values.toString());
+            IntWritable user = new IntWritable(-Integer.parseInt(st.nextToken()));
+
+            ArrayList<Integer> friends = new ArrayList<Integer>();
+
+            IntWritable friend1 = new IntWritable();
+            while (st.hasMoreTokens()) {
+                Integer friend = Integer.parseInt(st.nextToken());
+                friend1.set(friend);
+                context.write(friend1, user);
+                friends.add(friend);
+            }
+
+            ArrayList<Integer> seenFriends = new ArrayList<Integer>();
+            // The element in the pairs that will be emitted.
+            IntWritable friend2 = new IntWritable();
+            for (Integer friend : friends) {
+                friend1.set(friend);
+                for (Integer seenFriend : seenFriends) {
+                    friend2.set(seenFriend);
+                    context.write(friend1, friend2);
+                    context.write(friend2, friend1);
+                }
+                seenFriends.add(friend1.get());
+            }
+        }
+    }
+
+}
