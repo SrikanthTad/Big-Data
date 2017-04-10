@@ -1,17 +1,6 @@
-<<<<<<< HEAD
+
 ### Big-Data
 
-##Assymetric Friend Recommendation Implementation using Hadoop MapReduce. 
-
-#Run: 
-
-Import to Eclipse and run there. 
-
-or 
-
-open terminal -- hadoop jar <path to Maven generated jar> <path to class> <input file> <temp folder> <output folder>
-=======
-#Big-Data
 --------------------------------
 
 ##Log Analysis
@@ -71,10 +60,14 @@ $ javac WhoToFollow.java
 
 $ hadoop jar >path to + Maven generated jar> >path to  + class> >input file> >temp folder> -output folder>
 
+
 ####ASSUMING RUN FROM HOME DIRECTORY
 ie: hadoop jar mapreduce-0.0.1-SNAPSHOT.jar com.srikanth.mapreduce.WhoToFollow test.txt temp output 
 
 //intermediary results will be put into temp folder 
 
 //final results will be put into output folder
->>>>>>> 8f6179ac4bc692ac39938685f5840e1ac6049f01
+
+
+
+
