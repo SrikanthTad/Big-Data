@@ -1,0 +1,32 @@
+#!/bin/bash
+#@author Srikanth
+
+if [ $1='-q' ]; then
+	q=$2
+	f1=$3
+	f2=$4
+	case $q in
+		1) echo '* Q1: line counts';;
+		2) echo "* Q2: sessions of user 'achille'";;
+		3) echo '* Q3: unique user names';;
+		4) echo '* Q4: sessions per user';;
+		5) echo '* Q5: number of errors';;
+		6) echo '* Q6: 5 most frequent error messages';;
+		7) echo '* Q7: users who started a session on hosts, i.e., on exactly 2 hosts';;
+		8) echo '* Q8: users who started a session on exactly one host name';;
+	esac
+
+	if [ $q -le 6 ];then
+		spark-submit q$q.py $f1
+		spark-submit q$q.py $f2
+	#elif [ q='2' ];then
+	elif [ $q -eq 9 ];then
+		spark-submit q$q.py $f1
+                spark-submit q$q.py $f2
+
+	else
+		spark-submit q$q.py $f1 $f2
+	fi
+else
+	echo 'Input error'
+fi
